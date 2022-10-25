@@ -5,3 +5,10 @@
 # @Site :
 # @File :test.py
 # @Software :PyCharm
+
+import pandas as pd
+
+all_df = pd.read_csv('/Users/empty/Desktop/1.csv', sep=';', index_col = False)
+all_df.head()
+
+print(2)
