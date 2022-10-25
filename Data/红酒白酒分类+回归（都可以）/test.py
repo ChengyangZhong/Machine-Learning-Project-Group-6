@@ -25,8 +25,9 @@ dataset["Label"]=le.fit_transform(dataset["Label"])
 
 y=dataset["Label"]
 #%%
-from sklearn.feature_selection import SelectKBest,chi2
-X=SelectKBest(chi2,k=3).fit_transform(X,y)
+from sklearn.feature_selection import SelectKBest,  f_classif
+
+X=SelectKBest(f_classif,k=3).fit_transform(Xs,y)
 #%%
 from sklearn.model_selection import train_test_split
 
