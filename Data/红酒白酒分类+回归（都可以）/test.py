@@ -1,7 +1,7 @@
 import pandas as pd
 #%%
-dataset_red=pd.read_csv("C:/Users/10253/Desktop/Machine-Learning-Project-Group-6/Data/红酒白酒分类+回归（都可以）/winequality-red.csv",sep=";",index_col=False)
-dataset_white=pd.read_csv("C:/Users/10253/Desktop/Machine-Learning-Project-Group-6/Data/红酒白酒分类+回归（都可以）/winequality-white.csv",sep=";",index_col=False)
+dataset_red=pd.read_csv("winequality-red.csv",sep=";",index_col=False)
+dataset_white=pd.read_csv("winequality-white.csv",sep=";",index_col=False)
 
 #%%
 # dataset_red.head(n=len(dataset_red))
@@ -34,10 +34,16 @@ Xs_train,Xs_test,y_train,y_test=train_test_split(Xs,y,test_size=0.3,random_state
 
 
 #%%
+from sklearn.svm import LinearSVC
+from sklearn.feature_selection import SelectFromModel
 from sklearn.svm import SVC
 
 clf=SVC(C=1.0,kernel="rbf",degree=3,gamma='auto',probability=True)
 clf.fit(Xs_train,y_train)
+# clf=LinearSVC(C=0.01,penalty="l1",dual=False).fit(X,y)
+# model=SelectFromModel(clf,perfit=True)
+
+
 #%%
 
 #%%
