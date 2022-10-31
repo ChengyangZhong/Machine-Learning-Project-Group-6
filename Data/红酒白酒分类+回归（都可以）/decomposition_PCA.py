@@ -15,6 +15,7 @@ dataset_red=pd.read_csv("winequality-red.csv",sep=";",index_col=False)
 features = dataset_red.columns
 x = dataset_red.loc[:, features].values
 
+# 预处理
 from sklearn.preprocessing import StandardScaler
 x = StandardScaler().fit_transform(x)
 
