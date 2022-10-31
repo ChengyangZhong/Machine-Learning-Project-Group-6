@@ -52,7 +52,7 @@ pca.fit(Xs, y)
 print(pca.explained_variance_ratio_)
 print(pca.singular_values_)
 
-
+# SVM check
 
 from sklearn.model_selection import train_test_split
 
