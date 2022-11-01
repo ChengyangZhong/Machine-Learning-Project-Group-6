@@ -9,7 +9,7 @@
 from sklearn.decomposition import PCA
 import pandas as pd
 
-dataset_red=pd.read_csv("winequality-red.csv",sep=";",index_col=False)
+dataset_red=pd.read_csv("Data/红酒白酒分类+回归（都可以）/winequality-red.csv",sep=";",index_col=False)
 
 # separating headers, x just like "header = None"
 features = dataset_red.columns
