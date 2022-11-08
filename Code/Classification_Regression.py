@@ -1,7 +1,10 @@
 import pandas as pd
+import numpy as np
 
-dataset_red=pd.read_csv("Data/winequality-red.csv",sep=";",index_col=False)
-dataset_white=pd.read_csv("Data/winequality-white.csv",sep=";",index_col=False)
+# dataset_red=pd.read_csv("Data/winequality-red.csv",sep=";",index_col=False)
+# dataset_white=pd.read_csv("Data/winequality-white.csv",sep=";",index_col=False)
+dataset_red=pd.read_csv("C:/Users/10253/Desktop/Machine-Learning-Project-Group-6/Data/winequality-red.csv",sep=";",index_col=False)
+dataset_white=pd.read_csv("C:/Users/10253/Desktop/Machine-Learning-Project-Group-6/Data/winequality-white.csv",sep=";",index_col=False)
 
 red=["red"]*len(dataset_red)
 dataset_red.insert(0,"Label",red)
@@ -19,7 +22,9 @@ axes=axes.ravel()
 
 for i,col in enumerate(dataset.columns[1:]):
     _=sns.boxplot(y=col,x='Label',data=dataset,ax=axes[i])
-    
+
+
+corrMatt = dataset.corr()
     
 mask = np.zeros_like(corrMatt)
 mask[np.triu_indices_from(mask)] = True
@@ -68,14 +73,16 @@ clf_fs_cv=Pipeline(
     [('feature selector',SelectKBest(f_classif,k=4)),('decision trees',DecisionTreeClassifier(criterion="entropy",splitter="best"))]
 )
 score=cross_val_score(clf_fs_cv,Xs,y,cv=10)
-print(score)
+print(score.mean())
 
 
 """
   DecisionTreeRegressor
 """
 
-dataset=pd.read_csv('/Data/airfoil_self_noise.dat',sep="\t",engine='python',
+# dataset=pd.read_csv('/Data/airfoil_self_noise.dat',sep="\t",engine='python',
+#                     names=["Frequency","Angle","Chord","Velocity","Suction","Pressure Level"],header=None)
+dataset=pd.read_csv('C:/Users/10253/Desktop/Machine-Learning-Project-Group-6/Data/airfoil_self_noise.dat',sep="\t",engine='python',
                     names=["Frequency","Angle","Chord","Velocity","Suction","Pressure Level"],header=None)
 
 Xs=dataset.drop("Pressure Level",axis=1)
